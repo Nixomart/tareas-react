@@ -10,7 +10,9 @@ export default function Task({ id, text, finished, completeTask, deleteTask }) {
                 className='task-text'>
                 {text}
             </div>
-            <div className='task-icon-container'>
+            <div
+                onClick={() => deleteTask(id)}
+                className='task-icon-container'>
                 <AiFillCloseCircle className="task-icon" />
             </div>
         </div>

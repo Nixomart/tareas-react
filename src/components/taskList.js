@@ -6,7 +6,10 @@ import Task from "./task";
 export default function TaskList() {
 
     const [listTask, setListTask] = useState([])
-
+    const addTask = (task) => {
+        console.log("tarea agregada")
+        console.log(task)
+    }
     return (
         <>
             <Form />
