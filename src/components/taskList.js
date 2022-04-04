@@ -21,12 +21,22 @@ export default function TaskList() {
         //hasta ahora se agrego y se muestra en consola como json
         console.log("tarea agregada")
         console.log(task)
-    }
+    };
 
     const deleteTask = (id) => {
         const tasksUpdates = listTask.filter(task => task.id !== id);
         setListTask(tasksUpdates)
-    }
+    };
+
+    const completeTask = (id) => {
+        const tasksUpdates = listTask.map(task => {
+            if (task.id === id) {
+                task.finished = !task.finished;
+            }
+            return task;
+        });
+        setListTask(tasksUpdates);
+    };
 
     return (
         <>
@@ -43,6 +53,7 @@ export default function TaskList() {
                             text={task.text}
                             finished={task.finished}
                             deleteTask={deleteTask}
+                            completeTask={completeTask}
                         />
 
                     )
