@@ -21,7 +21,8 @@ export default function Form(props) {
             text: window,
             finished: false
         }
-        console.log(newTask);
+        props.onSubmit(newTask);
+        // para ver en console.log(newTask);
     }
 
     return (
