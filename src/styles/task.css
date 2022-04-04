@@ -13,6 +13,21 @@
     cursor: pointer;
 }
 
+/* Degrade de colores a diferentes tareas 
+nth-child() es para decir el n hijo
+cada 3 hijos se va a repetir el color indicando el 1*/
+.task-container:nth-child(3n + 1) {
+    background-color: #1b1b32;
+}
+
+.task-container:nth-child(3n + 2) {
+    background-color: #2a2a40;
+}
+
+.task-container:nth-child(3n + 3) {
+    background-color: #3b3b4f;
+}
+
 .task-text {
     width: 100%;
     height: 100%;

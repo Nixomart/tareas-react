@@ -7,11 +7,27 @@ export default function TaskList() {
 
     const [listTask, setListTask] = useState([])
     const addTask = (task) => {
+        if (task.text.trim()) {
+            //trim nos permite quitar los espacios en blancos de una cadena 
+            //del principio y del final
+            task.text = task.text.trim();
+            //usamos spread para que se muestre la tarea guardada al principio
+            //y la listTask se convierten en arreglos indivuales en obj independintes
+            const tasksUpdates = [task, ...listTask];
+            //actualizamos el estado de las tareas con la constante de arreglo creada
+            setListTask(tasksUpdates);
 
+        }
         //hasta ahora se agrego y se muestra en consola como json
         console.log("tarea agregada")
         console.log(task)
     }
+
+    const deleteTask = (id) => {
+        const tasksUpdates = listTask.filter(task => task.id !== id);
+        setListTask(tasksUpdates)
+    }
+
     return (
         <>
             <Form onSubmit={addTask} />
@@ -19,8 +35,14 @@ export default function TaskList() {
                 {
                     listTask.map((task) =>
                         <Task
+                            //key es un props de cada component de react
+                            //id es un props que creamos con desectructuracion
+                            //y es el que se va a usar
+                            key={task.id}
+                            id={task.id}
                             text={task.text}
                             finished={task.finished}
+                            deleteTask={deleteTask}
                         />
 
                     )
