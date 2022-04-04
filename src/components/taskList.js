@@ -7,12 +7,14 @@ export default function TaskList() {
 
     const [listTask, setListTask] = useState([])
     const addTask = (task) => {
+
+        //hasta ahora se agrego y se muestra en consola como json
         console.log("tarea agregada")
         console.log(task)
     }
     return (
         <>
-            <Form />
+            <Form onSubmit={addTask} />
             <div className='task-list-container'>
                 {
                     listTask.map((task) =>
